@@ -22,7 +22,7 @@ export default class Cart {
     }
 
 
-    private decrease(id: number, count: number): void {
+    decrease(id: number, count: number = 1): void {
         const index = this.findIndexByID(id);
         if (index !== -1) {
             if (this.products[index].count > count) {
@@ -31,7 +31,7 @@ export default class Cart {
                 this.deleteById(id);
             }
         } else {
-            console.log("Item not found");
+            throw new Error("Item not found");
         }
     }
 
@@ -61,9 +61,6 @@ export default class Cart {
         }
     }
 
-    remove(id: number, count: number = 1): void {
-        this.decrease(id, count);
-    }
 
     deleteItem(item: Buyable): void {
         this.deleteById(item.id);
@@ -76,5 +73,14 @@ export default class Cart {
 
     get items(): { product: Buyable, count: number }[] {
         return [...this.products];
+    }
+
+    getCountById(id: number): number {
+        const index = this.findIndexByID(id);
+        return index != -1 ? this.products[index].count : 0;
+    }
+
+    getCountByItem(item: Buyable): number {
+        return this.getCountById(item.id)
     }
 }

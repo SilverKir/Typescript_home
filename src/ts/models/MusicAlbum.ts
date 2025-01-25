@@ -8,4 +8,6 @@ export default class MusicAlbum implements Buyable {
         readonly author: string,
         readonly price: number
     ) { }
+
+
 }

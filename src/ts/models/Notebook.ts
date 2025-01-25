@@ -11,4 +11,6 @@ export default class Notebook extends Countable implements Buyable {
     ) {
         super();
     }
+
+
 }
