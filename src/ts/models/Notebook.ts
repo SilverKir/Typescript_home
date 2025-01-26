@@ -1,9 +1,9 @@
 import Buyable from "./interfaces/Buyable";
 import Countable from "./interfaces/Countable";
-import getCount from "./Counter";
+import uniqid from "uniqid";
 
 export default class Notebook extends Countable implements Buyable {
-    readonly id = getCount()();
+    readonly id = uniqid()
     constructor(
         readonly name: string,
         readonly price: number,

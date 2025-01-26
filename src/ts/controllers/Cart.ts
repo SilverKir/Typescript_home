@@ -17,12 +17,12 @@ export default class Cart {
     }
 
 
-    private findIndexByID(id: number): number {
+    private findIndexByID(id: string): number {
         return this.products.findIndex(item => item.product.id === id);
     }
 
 
-    decrease(id: number, count: number = 1): void {
+    decrease(id: string, count: number = 1): void {
         const index = this.findIndexByID(id);
         if (index !== -1) {
             if (this.products[index].count > count) {
@@ -35,7 +35,7 @@ export default class Cart {
         }
     }
 
-    private increase(id: number, count: number): void {
+    private increase(id: string, count: number): void {
         const index = this.findIndexByID(id);
         this.products[index].count += count;
     }
@@ -67,7 +67,7 @@ export default class Cart {
     }
 
 
-    deleteById(id: number): void {
+    deleteById(id: string): void {
         this.products = this.products.filter(item => item.product.id !== id);
     }
 
@@ -75,7 +75,7 @@ export default class Cart {
         return [...this.products];
     }
 
-    getCountById(id: number): number {
+    getCountById(id: string): number {
         const index = this.findIndexByID(id);
         return index != -1 ? this.products[index].count : 0;
     }

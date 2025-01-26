@@ -1,8 +1,8 @@
 import Buyable from "./interfaces/Buyable";
-import getCount from "./Counter";
+import uniqid from "uniqid";
 
 export default class Movie implements Buyable {
-    readonly id = getCount()()
+    readonly id = uniqid()
 
     constructor(
         readonly name: string,
